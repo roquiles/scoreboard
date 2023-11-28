@@ -1,13 +1,14 @@
-import { PropTypes } from "prop-types";
-import { useCallback, useState } from "react";
+import { useCallback, useContext, useState } from "react";
+import ScoreboardContext from "../context/ScoreboardContext";
 
-const PlayerInput = ({ onAddPlayer }) => {
+const PlayerInput = () => {
   const [newPlayer, setNewPlayer] = useState({ name: "", score: 0 });
+  const { addPlayers } = useContext(ScoreboardContext);
 
   const addNewPlayer = useCallback(() => {
-    onAddPlayer(newPlayer);
+    addPlayers(newPlayer);
     setNewPlayer({ ...newPlayer, name: "" });
-  }, [newPlayer, onAddPlayer]);
+  }, [newPlayer, addPlayers]);
 
   return (
     <div className="col-span-4 flex gap-4 rounded-b-lg border-t-2 bg-slate-900 p-4">
@@ -30,10 +31,6 @@ const PlayerInput = ({ onAddPlayer }) => {
       </button>
     </div>
   );
-};
-
-PlayerInput.propTypes = {
-  onAddPlayer: PropTypes.func.isRequired,
 };
 
 export default PlayerInput;
