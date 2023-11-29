@@ -1,17 +1,31 @@
 import { PropTypes } from "prop-types";
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import ScoreboardContext from "../context/ScoreboardContext";
 
 const Player = ({ name, score }) => {
   const { deletePlayers, updateScore } = useContext(ScoreboardContext);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    let id;
+    if (isDeleting) {
+      id = setInterval(() => deletePlayers(name), 600);
+    }
+
+    return () => clearInterval(id);
+  }, [isDeleting, deletePlayers, name]);
 
   return (
-    <div className="col-span-4 grid grid-cols-4 border-t-2">
+    <div
+      className={`${
+        isDeleting ? "animate-delete" : "animate-insert"
+      } col-span-4 grid grid-cols-4 border-t-2`}
+    >
       <span className="col-span-3 bg-slate-800 py-5 pl-8 text-xl font-semibold text-slate-50">
         <button
           title="Delete player"
           className="mr-4 rounded-full border-2 px-2 text-lg transition hover:border-red-500 hover:text-red-500"
-          onClick={() => deletePlayers(name)}
+          onClick={() => setIsDeleting(true)}
         >
           X
         </button>
