@@ -11,19 +11,19 @@ const PlayerInput = () => {
   }, [newPlayer, addPlayers]);
 
   return (
-    <div className="col-span-4 flex gap-4 rounded-b-lg border-t-2 bg-slate-900 p-4">
+    <div className="col-span-4 gap-4 rounded-b-lg border-t-2 bg-slate-900 p-4 sm:flex">
       <input
         type="text"
         name="player"
         id="player"
         placeholder="PLAYER NAME"
-        className="h-8 grow rounded bg-slate-700 px-2 text-slate-50"
+        className="h-10 w-full grow rounded bg-slate-700 px-2 text-slate-50 sm:h-8 sm:w-auto"
         onChange={(e) => setNewPlayer({ ...newPlayer, name: e.target.value })}
         value={newPlayer.name}
       />
       <button
         type="submit"
-        className="rounded bg-slate-700 px-4 font-bold uppercase text-slate-400  ring-slate-600 transition hover:ring-2"
+        className="mt-4 h-10 w-full rounded bg-slate-800 px-4 font-bold uppercase  text-slate-400 ring-slate-600 transition hover:ring-2 sm:mt-auto sm:h-8 sm:w-auto"
         disabled={newPlayer.name.length <= 0}
         onClick={addNewPlayer}
       >

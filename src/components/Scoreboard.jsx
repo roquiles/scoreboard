@@ -11,7 +11,7 @@ const Scoreboard = () => {
     useContext(ScoreboardContext);
 
   return (
-    <div className="m-auto grid w-fit grid-cols-4 uppercase tracking-wider">
+    <div className="m-auto grid w-fit grid-cols-3 uppercase tracking-wider sm:grid-cols-4">
       <Header />
       <StopWatch />
 
