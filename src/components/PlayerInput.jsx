@@ -11,7 +11,7 @@ const PlayerInput = () => {
   }, [newPlayer, addPlayers]);
 
   return (
-    <div className="col-span-4 gap-4 rounded-b-lg border-t-2 bg-slate-900 p-4 sm:flex">
+    <form className="col-span-4 gap-4 rounded-b-lg border-t-2 bg-slate-900 p-4 sm:flex">
       <input
         type="text"
         name="player"
@@ -29,7 +29,7 @@ const PlayerInput = () => {
       >
         Add player
       </button>
-    </div>
+    </form>
   );
 };
 
